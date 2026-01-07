@@ -8,8 +8,20 @@
 #define LIBRAYCAST_VERSION "unknown"
 #endif
 
+/**
+ * @brief Raycast color type
+ * ARGB (0xAARRGGBB) signed 32-bit integer
+ */
 typedef int32_t           RaycastColor; // ARGB format: 0xAARRGGBB
+
+/**
+ * @brief Raycast empty (transparent) color
+ */
 static const RaycastColor RAYCAST_EMPTY = -1;
+
+/**
+ * @brief Raycast direction type
+ */
 typedef enum { RAYCAST_FORWARD, RAYCAST_BACKWARD, RAYCAST_LEFT, RAYCAST_RIGHT } RaycastDirection;
 
 /**

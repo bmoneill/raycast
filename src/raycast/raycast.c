@@ -4,7 +4,6 @@
 #include <math.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
  * @brief Cast a ray from a point at a given angle and return the distance to the first non-black pixel.
