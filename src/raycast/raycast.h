@@ -4,8 +4,8 @@
 #include <SDL3/SDL.h>
 #include <stdint.h>
 
-#ifndef LIBRAYCAST_VERSION
-#define LIBRAYCAST_VERSION "unknown"
+#ifndef RAYCAST_VERSION
+#define RAYCAST_VERSION "unknown"
 #endif
 
 /**

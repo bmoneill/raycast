@@ -586,4 +586,4 @@ void raycast_set_draw_color(SDL_Renderer* renderer, const RaycastColor* color) {
  *
  * @return A string containing the version of the libraycast library.
  */
-const char* raycast_version(void) { return LIBRAYCAST_VERSION; }
+const char* raycast_version(void) { return RAYCAST_VERSION; }
