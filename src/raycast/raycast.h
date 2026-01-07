@@ -12,7 +12,7 @@
  * @brief Raycast color type
  * ARGB (0xAARRGGBB) signed 32-bit integer
  */
-typedef int32_t           RaycastColor; // ARGB format: 0xAARRGGBB
+typedef int32_t RaycastColor; // ARGB format: 0xAARRGGBB
 
 /**
  * @brief Raycast empty (transparent) color
