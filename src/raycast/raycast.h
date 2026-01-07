@@ -50,7 +50,8 @@ typedef struct {
  * @brief Raycaster structure
  */
 typedef struct {
-    RaycastColor*    map; //!< 1D array representing the 2D map (RaycastColor if untextured, RaycastTexture if textured)
+    RaycastColor*
+        map; //!< 1D array representing the 2D map (RaycastColor if untextured, RaycastTexture if textured)
     int              width; //!< Width of the map
     int              height; //!< Height of the map
     RaycastTexture** textures; //!< Array of textures
