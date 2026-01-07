@@ -27,89 +27,60 @@ typedef enum { RAYCAST_FORWARD, RAYCAST_BACKWARD, RAYCAST_LEFT, RAYCAST_RIGHT } 
 /**
  * @struct RaycastTexture
  * @brief Texture structure for wall rendering
- *
- * @param pixels ARGB pixel data
- * @param width Width of the texture
- * @param height Height of the texture
  */
 typedef struct {
-    RaycastColor* pixels;
-    int           width;
-    int           height;
+    RaycastColor* pixels; //!< ARGB pixel data
+    int           width; //!< Width of the texture
+    int           height; //!< Height of the texture
 } RaycastTexture;
 
 /**
  * @struct RaycastHit
  * @brief Information about a raycast hit
- *
- * @param distance Distance to the hit point
- * @param wallX Position where the wall was hit (0.0 to 1.0)
- * @param side Which side of the wall was hit (0 = vertical, 1 = horizontal)
- * @param textureId ID of the texture to use
  */
 typedef struct {
-    float distance;
-    float wallX;
-    int   side;
-    int   textureId;
+    float distance; //!< Distance to the hit point
+    float wallX; //!< Position where the wall was hit (0.0 to 1.0)
+    int   side; //!< Which side of the wall was hit (0 = vertical, 1 = horizontal)
+    int   textureId; //!< ID of the texture to use
 } RaycastHit;
 
 /**
  * @struct Raycaster
  * @brief Raycaster structure
- *
- * @param map 1D array representing the 2D map (RaycastColor if untextured, RaycastTexture if textured)
- * @param width Width of the map
- * @param height Height of the map
- * @param textures Array of textures
- * @param textureCount Number of textures
- * @param textured Whether to use textures
  */
 typedef struct {
-    RaycastColor*    map;
-    int              width;
-    int              height;
-    RaycastTexture** textures;
-    int              textureCount;
-    int              textured;
+    RaycastColor*    map; //!< 1D array representing the 2D map (RaycastColor if untextured, RaycastTexture if textured)
+    int              width; //!< Width of the map
+    int              height; //!< Height of the map
+    RaycastTexture** textures; //!< Array of textures
+    int              textureCount; //!< Number of textures
+    int              textured; //!< Whether to use textures
 } Raycaster;
 
 /**
  * @struct RaycastRect
  * @brief Raycast rectangle structure
- *
- * @param x X coordinate
- * @param y Y coordinate
- * @param w Width
- * @param h Height
  */
 typedef struct {
-    float x;
-    float y;
-    float w;
-    float h;
+    float x; //!< X coordinate
+    float y; //!< Y coordinate
+    float w; //!< Width
+    float h; //!< Height
 } RaycastRect;
 
 /**
  * @struct RaycastCamera
  * @brief Raycast camera structure
- *
- * @param posX   X coordinate
- * @param posY   Y coordinate
- * @param dirX   Direction vector x
- * @param dirY   Direction vector y
- * @param planeX Camera plane x
- * @param planeY Camera plane y
- * @param fov    Field of view in degrees
  */
 typedef struct {
-    float posX;
-    float posY;
-    float dirX;
-    float dirY;
-    float planeX;
-    float planeY;
-    int   fov;
+    float posX; //!< X coordinate
+    float posY; //!< Y coordinate
+    float dirX; //!< Direction vector x
+    float dirY; //!< Direction vector y
+    float planeX; //!< Camera plane x
+    float planeY; //!< Camera plane y
+    int   fov; //!< Field of view in degrees
 } RaycastCamera;
 
 float           raycast_cast(Raycaster*, float, float, float, RaycastColor*);
