@@ -5,7 +5,7 @@ var raycast_8h =
     [ "Raycaster", "structRaycaster.html", "structRaycaster" ],
     [ "RaycastRect", "structRaycastRect.html", "structRaycastRect" ],
     [ "RaycastCamera", "structRaycastCamera.html", "structRaycastCamera" ],
-    [ "LIBRAYCAST_VERSION", "raycast_8h.html#a34ab7249259c7980b60dfe4cf6ed38bd", null ],
+    [ "RAYCAST_VERSION", "raycast_8h.html#aa876f913258beec082e707b19374023a", null ],
     [ "RaycastColor", "raycast_8h.html#adb0bb24e14c2e4ec0a30346919827041", null ],
     [ "RaycastDirection", "raycast_8h.html#a3fb1488b5c585184a8ab764c2e9346e2", [
       [ "RAYCAST_FORWARD", "raycast_8h.html#a3fb1488b5c585184a8ab764c2e9346e2a30786283d189fac4c894883d50987515", null ],
