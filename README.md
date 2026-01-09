@@ -6,15 +6,13 @@
 
 This is a Raycasting engine using SDL3.
 
-
-
 ## Building
 
 ### Linux
 
 ```shell
 # build library and demo
-cmake -S . -B build -DTARGET_GROUP=all
+cmake -S . -B build
 cmake --build build
 
 # install
@@ -27,7 +25,7 @@ Demos will be located in the `build/demo` directory.
 
 ```shell
 git submodule update
-cmake -S . -B build -DTARGET_GROUP=test
+cmake -S . -B build -DTEST=ON
 cmake --build build
 cd build
 ctest --verbose

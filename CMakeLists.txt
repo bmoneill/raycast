@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.31.6)
 project("libraycast" C)
 include(CTest)
 
+option(TEST "Build tests" OFF)
+
 execute_process(
     COMMAND git rev-parse --short HEAD
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -59,18 +61,13 @@ function(Build_Tests)
     add_subdirectory(test)
 endfunction()
 
-if(TARGET_GROUP STREQUAL demo)
-    Build_Library()
-    Build_Demo()
-elseif(TARGET_GROUP STREQUAL test)
+if(TEST)
     Enable_Tests()
     Build_Library()
     Build_Tests()
-elseif(TARGET_GROUP STREQUAL all)
+else(TARGET_GROUP STREQUAL all)
     Enable_Tests()
     Build_Library()
     Build_Demo()
     Build_Tests()
-else()
-    Build_Library()
 endif()

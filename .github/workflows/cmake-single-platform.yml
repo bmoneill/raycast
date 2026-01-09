@@ -7,7 +7,7 @@ on:
     branches: ["main", "testing"]
 
 env:
-  BUILD_TYPE: Test
+  BUILD_TYPE: Debug
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
           submodules: true
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DTARGET_GROUP=test -DSDL_UNIX_CONSOLE_BUILD=ON
+        run: cmake -B ${{github.workspace}}/build -DTEST=ON -DSDL_UNIX_CONSOLE_BUILD=ON
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
