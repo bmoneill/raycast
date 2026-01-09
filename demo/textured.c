@@ -37,10 +37,10 @@ int main(int argc, char* argv[]) {
     int             h                        = 600;
     int             mapWidth                 = 20;
     int             mapLength                = 20;
-    RaycastColor    fg                       = RED;
-    RaycastColor    bg                       = BLACK;
-    RaycastColor    bg2D                     = WHITE;
-    RaycastColor    wall2D                   = BLUE;
+    int             fg                       = RED;
+    int             bg                       = BLACK;
+    int             bg2D                     = WHITE;
+    int             wall2D                   = BLUE;
     SDL_Window*     window                   = NULL;
     SDL_Renderer*   renderer                 = NULL;
     Raycaster*      raycaster                = NULL;
@@ -139,8 +139,8 @@ static RaycastTexture* create_brick_texture(int width, int height) {
     if (!texture)
         return NULL;
 
-    RaycastColor brick_color  = 0xFF8B4513;
-    RaycastColor mortar_color = 0xFFD3D3D3;
+    int brick_color  = 0xFF8B4513;
+    int mortar_color = 0xFFD3D3D3;
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -202,7 +202,7 @@ static RaycastTexture* create_stone_texture(int width, int height) {
     if (!texture)
         return NULL;
 
-    RaycastColor base_color = 0xFF808080;
+    int base_color = 0xFF808080;
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
