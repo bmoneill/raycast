@@ -9,15 +9,9 @@
 #endif
 
 /**
- * @brief Raycast color type
- * ARGB (0xAARRGGBB) signed 32-bit integer
- */
-typedef int32_t RaycastColor; // ARGB format: 0xAARRGGBB
-
-/**
  * @brief Raycast empty (transparent) color
  */
-static const RaycastColor RAYCAST_EMPTY = -1;
+static const int RAYCAST_EMPTY = -1;
 
 /**
  * @brief Raycast direction type
@@ -29,9 +23,9 @@ typedef enum { RAYCAST_FORWARD, RAYCAST_BACKWARD, RAYCAST_LEFT, RAYCAST_RIGHT } 
  * @brief Texture structure for wall rendering
  */
 typedef struct {
-    RaycastColor* pixels; //!< ARGB pixel data
-    int           width; //!< Width of the texture
-    int           height; //!< Height of the texture
+    int* pixels; //!< ARGB pixel data
+    int  width; //!< Width of the texture
+    int  height; //!< Height of the texture
 } RaycastTexture;
 
 /**
@@ -50,8 +44,8 @@ typedef struct {
  * @brief Raycaster structure
  */
 typedef struct {
-    RaycastColor*
-        map; //!< 1D array representing the 2D map (RaycastColor if untextured, RaycastTexture if textured)
+    int*
+        map; //!< 1D array representing the 2D map (ARGB color if untextured, texture ID if textured)
     int              width; //!< Width of the map
     int              height; //!< Height of the map
     RaycastTexture** textures; //!< Array of textures
@@ -84,32 +78,31 @@ typedef struct {
     int   fov; //!< Field of view in degrees
 } RaycastCamera;
 
-float           raycast_cast(Raycaster*, float, float, float, RaycastColor*);
+float           raycast_cast(Raycaster*, float, float, float, int*);
 void            raycast_cast_textured(Raycaster*, float, float, float, RaycastHit*);
 RaycastTexture* raycast_texture_create(int, int);
 void            raycast_texture_destroy(RaycastTexture*);
 void            raycast_add_texture(Raycaster*, RaycastTexture*);
 bool            raycast_collides(Raycaster*, float, float);
 void            raycast_destroy(Raycaster*);
-void            raycast_draw(Raycaster*, const RaycastRect*, const RaycastColor*);
+void            raycast_draw(Raycaster*, const RaycastRect*, const int*);
 void            raycast_erase(Raycaster*, const RaycastRect*);
 Raycaster*      raycast_init(int, int);
 int             raycast_init_ptr(Raycaster*, int, int);
 void            raycast_move_camera(RaycastCamera*, RaycastDirection, float);
 void raycast_move_camera_with_collision(Raycaster*, RaycastCamera*, RaycastDirection, float);
-void raycast_render(Raycaster*, const RaycastCamera*, SDL_Renderer*, int, int, const RaycastColor*);
-void raycast_render_textured(
-    Raycaster*, const RaycastCamera*, SDL_Renderer*, int, int, const RaycastColor*);
-void        raycast_render_2d(Raycaster*,
-                              const RaycastCamera*,
-                              SDL_Renderer*,
-                              int,
-                              float,
-                              const RaycastColor*,
-                              const RaycastColor*,
-                              const RaycastColor*);
-void        raycast_rotate_camera(RaycastCamera*, float);
-void        raycast_set_draw_color(SDL_Renderer*, const RaycastColor*);
+void raycast_render(Raycaster*, const RaycastCamera*, SDL_Renderer*, int, int, const int*);
+void raycast_render_textured(Raycaster*, const RaycastCamera*, SDL_Renderer*, int, int, const int*);
+void raycast_render_2d(Raycaster*,
+                       const RaycastCamera*,
+                       SDL_Renderer*,
+                       int,
+                       float,
+                       const int*,
+                       const int*,
+                       const int*);
+void raycast_rotate_camera(RaycastCamera*, float);
+void raycast_set_draw_color(SDL_Renderer*, const int*);
 const char* raycast_version(void);
 
 #endif

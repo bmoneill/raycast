@@ -20,7 +20,7 @@
  *
  * @return The distance to the first non-black pixel, or 0 if no hit is found.
  */
-float raycast_cast(Raycaster* raycaster, float x, float y, float angle, RaycastColor* hitColor) {
+float raycast_cast(Raycaster* raycaster, float x, float y, float angle, int* hitColor) {
     float currentX = x;
     float currentY = y;
     while (currentX >= 0 && currentX < raycaster->width && currentY >= 0
@@ -151,7 +151,7 @@ RaycastTexture* raycast_texture_create(int width, int height) {
         return NULL;
     }
 
-    texture->pixels = (RaycastColor*) calloc(width * height, sizeof(RaycastColor));
+    texture->pixels = (int*) calloc(width * height, sizeof(int));
     if (!texture->pixels) {
         free(texture);
         return NULL;
@@ -255,7 +255,7 @@ void raycast_destroy(Raycaster* raycaster) {
  * @param rect The rectangle to draw, defined by its top-left point and size.
  * @param color The color to fill the rectangle with.
  */
-void raycast_draw(Raycaster* raycaster, const RaycastRect* rect, const RaycastColor* color) {
+void raycast_draw(Raycaster* raycaster, const RaycastRect* rect, const int* color) {
     for (int i = 0; i < rect->h; i++) {
         for (int j = 0; j < rect->w; j++) {
             if (rect->x + j < 0 || rect->x + j >= raycaster->width || rect->y + i < 0
@@ -320,7 +320,7 @@ int raycast_init_ptr(Raycaster* raycaster, int w, int h) {
         free(raycaster->map);
     }
 
-    raycaster->map = (RaycastColor*) malloc(w * h * sizeof(RaycastColor));
+    raycaster->map = (int*) malloc(w * h * sizeof(int));
     if (!raycaster->map) {
         return 1;
     }
@@ -387,13 +387,13 @@ void raycast_render(Raycaster*           raycaster,
                     SDL_Renderer*        renderer,
                     int                  w,
                     int                  h,
-                    const RaycastColor*  background) {
+                    const int*           background) {
     float direction = atan2f(camera->dirY, camera->dirX) * (180.0f / M_PI);
 
     // Render each vertical slice (column) of the screen
     for (int x = 0; x < w; x++) {
-        float        angle    = direction - (camera->fov / 2.0f) + (camera->fov * x) / w;
-        RaycastColor hitColor = RAYCAST_EMPTY;
+        float angle    = direction - (camera->fov / 2.0f) + (camera->fov * x) / w;
+        int   hitColor = RAYCAST_EMPTY;
         float distance = raycast_cast(raycaster, camera->posX, camera->posY, angle, &hitColor);
 
         // Simple wall height calculation (inverse proportional to distance)
@@ -430,7 +430,7 @@ void raycast_render_textured(Raycaster*           raycaster,
                              SDL_Renderer*        renderer,
                              int                  w,
                              int                  h,
-                             const RaycastColor*  background) {
+                             const int*           background) {
     float direction = atan2f(camera->dirY, camera->dirX) * (180.0f / M_PI);
 
     for (int x = 0; x < w; x++) {
@@ -464,7 +464,7 @@ void raycast_render_textured(Raycaster*           raycaster,
                 if (texYCoord >= texture->height)
                     texYCoord = texture->height - 1;
 
-                RaycastColor color = texture->pixels[texYCoord * texture->width + texX];
+                int color = texture->pixels[texYCoord * texture->width + texX];
 
                 if (hit.side == 1) {
                     int r = ((color >> 16) & 0xFF) / 2;
@@ -478,7 +478,7 @@ void raycast_render_textured(Raycaster*           raycaster,
                 SDL_RenderPoint(renderer, x, y);
             }
         } else {
-            RaycastColor fallbackColor = (hit.textureId == -1) ? *background : hit.textureId;
+            int fallbackColor = (hit.textureId == -1) ? *background : hit.textureId;
             raycast_set_draw_color(renderer, &fallbackColor);
             SDL_RenderLine(renderer, x, wallTop, x, wallBottom);
         }
@@ -507,9 +507,9 @@ void raycast_render_2d(Raycaster*           raycaster,
                        SDL_Renderer*        renderer,
                        int                  w,
                        float                scale,
-                       const RaycastColor*  background,
-                       const RaycastColor*  wallColor,
-                       const RaycastColor*  rayColor) {
+                       const int*           background,
+                       const int*           wallColor,
+                       const int*           rayColor) {
     // Render the map
     if (raycaster->textured) {
         for (int y = 0; y < raycaster->height; y++) {
@@ -529,7 +529,7 @@ void raycast_render_2d(Raycaster*           raycaster,
     } else {
         for (int y = 0; y < raycaster->height; y++) {
             for (int x = 0; x < raycaster->width; x++) {
-                RaycastColor color = raycaster->map[y * raycaster->width + x];
+                int color = raycaster->map[y * raycaster->width + x];
                 raycast_set_draw_color(renderer, (color == RAYCAST_EMPTY) ? background : &color);
                 SDL_RenderPoint(renderer, ((float) x) * scale, ((float) y) * scale);
             }
@@ -537,7 +537,7 @@ void raycast_render_2d(Raycaster*           raycaster,
     }
 
     // Render the rays
-    RaycastColor hit = RAYCAST_EMPTY;
+    int hit = RAYCAST_EMPTY;
     raycast_set_draw_color(renderer, rayColor);
     float direction = atan2f(camera->dirY, camera->dirX) * (180.0f / M_PI);
     float startX    = direction - (camera->fov / 2);
@@ -568,15 +568,15 @@ void raycast_rotate_camera(RaycastCamera* camera, float angle) {
 }
 
 /**
- * @brief Set the SDL_Renderer draw color based on a RaycastColor.
+ * @brief Set the SDL_Renderer draw color based on a int.
  *
- * This function extracts the ARGB components from the RaycastColor and sets the SDL_Renderer
+ * This function extracts the ARGB components from the int and sets the SDL_Renderer
  * draw color accordingly.
  *
  * @param renderer The SDL_Renderer to set the draw color for.
- * @param color Pointer to the RaycastColor to use for setting the draw color.
+ * @param color Pointer to the int to use for setting the draw color.
  */
-void raycast_set_draw_color(SDL_Renderer* renderer, const RaycastColor* color) {
+void raycast_set_draw_color(SDL_Renderer* renderer, const int* color) {
 #define c ((int32_t) *color)
     SDL_SetRenderDrawColor(renderer, (c >> 16) & 0xFF, (c >> 8) & 0xFF, c & 0xFF, (c >> 24) & 0xFF);
 }

@@ -32,8 +32,8 @@ void test_raycast_init(void) {
 
 void test_raycast_draw(void) {
     INIT(100, 50);
-    RaycastRect  rect  = { 10, 5, 20, 10 };
-    RaycastColor color = 0xFF00FF00;
+    RaycastRect rect  = { 10, 5, 20, 10 };
+    int         color = 0xFF00FF00;
     raycast_draw(raycaster, &rect, &color);
     for (int i = 0; i < rect.h; i++) {
         for (int j = 0; j < rect.w; j++) {
@@ -46,8 +46,8 @@ void test_raycast_draw(void) {
 
 void test_raycast_erase(void) {
     INIT(100, 50);
-    RaycastRect  rect  = { 10, 5, 20, 10 };
-    RaycastColor color = 0xFF00FF00;
+    RaycastRect rect  = { 10, 5, 20, 10 };
+    int         color = 0xFF00FF00;
     raycast_draw(raycaster, &rect, &color);
     raycast_erase(raycaster, &rect);
     for (int i = 0; i < rect.h; i++) {
