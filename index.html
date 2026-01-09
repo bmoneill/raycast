@@ -100,7 +100,7 @@ Building</h1>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Linux</h2>
 <div class="fragment"><div class="line"># build library and demo</div>
-<div class="line">cmake -S . -B build -DTARGET_GROUP=all</div>
+<div class="line">cmake -S . -B build</div>
 <div class="line">cmake --build build</div>
 <div class="line"> </div>
 <div class="line"># install</div>
@@ -109,7 +109,7 @@ Linux</h2>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Testing</h1>
 <div class="fragment"><div class="line">git submodule update</div>
-<div class="line">cmake -S . -B build -DTARGET_GROUP=test</div>
+<div class="line">cmake -S . -B build -DTEST=ON</div>
 <div class="line">cmake --build build</div>
 <div class="line">cd build</div>
 <div class="line">ctest --verbose</div>
