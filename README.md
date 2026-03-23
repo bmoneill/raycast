@@ -1,10 +1,26 @@
-# raycast
+<div align="center">
+    <h1><b>raycast</b>
+    <h4>A Raycasting engine using SDL3.</h4>
+    <a href="https://github.com/bmoneill/raycast/actions/workflows/cmake-single-platform.yml"><img src="https://github.com/bmoneill/raycast/actions/workflows/cmake-single-platform.yml/badge.svg?branch=main" alt="Build Status" /></a>
+    <a href="https://bmoneill.github.io/raycast"><img src="https://github.com/bmoneill/raycast/actions/workflows/doxygen.yml/badge.svg?branch=main" alt="Doxygen Status" /></a>
+    <a href="https://github.com/bmoneill/raycast/actions/workflows/clang-format.yml"><img src="https://github.com/bmoneill/raycast/actions/workflows/clang-format.yml/badge.svg?branch=main" alt="Clang-format status" /></a>
+</div>
 
-[![Build Status](https://github.com/bmoneill/raycast/actions/workflows/cmake-single-platform.yml/badge.svg?branch=main)](https://github.com/bmoneill/raycast/actions/workflows/cmake-single-platform.yml)
-[![Doxygen Status](https://github.com/bmoneill/raycast/actions/workflows/doxygen.yml/badge.svg?branch=main)](https://bmoneill.github.io/raycast)
-[![Clang-format status](https://github.com/bmoneill/raycast/actions/workflows/clang-format.yml/badge.svg?branch=main)](https://github.com/bmoneill/raycast/actions/workflows/clang-format.yml)
+## Table of Contents
 
-This is a Raycasting engine using SDL3.
+- [Overview](#overview)
+- [Building](#building)
+- [Testing](#testing)
+- [Showcase](#showcase)
+- [Library Documentation](#documentation)
+- [Further Reading](#further-reading)
+- [Bugs](#bugs)
+- [License](#license)
+
+## Overview
+
+This is a Raycasting engine using SDL3, with support for 3-D textured and untextured
+rendering, as well as 2-D top-down "minimap" rendering.
 
 ## Building
 
@@ -41,7 +57,7 @@ ctest --verbose
 
 ## Further Reading
 
-* [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/raycasting.html)
+- [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/raycasting.html)
 
 ## Bugs
 
