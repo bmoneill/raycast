@@ -99,6 +99,7 @@ Table of Contents</h2>
 <ul>
 <li>Overview</li>
 <li>Building</li>
+<li>Requirements</li>
 <li>Testing</li>
 <li>Showcase</li>
 <li>Library Documentation</li>
@@ -112,7 +113,13 @@ Overview</h2>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Building</h2>
 <h3><a class="anchor" id="autotoc_md3"></a>
-Linux</h3>
+Requirements</h3>
+<ul>
+<li><a href="https://cmake.org/">CMake</a> 3.31.6 or higher</li>
+<li>A C99-compatible C compiler (e.g. GCC, Clang)</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md4"></a>
+Linux / macOS</h3>
 <div class="fragment"><div class="line"># build library and demo</div>
 <div class="line">cmake -S . -B build</div>
 <div class="line">cmake --build build</div>
@@ -120,28 +127,30 @@ Linux</h3>
 <div class="line"># install</div>
 <div class="line">cmake --install build</div>
 </div><!-- fragment --><p>Demos will be located in the <code>build/demo</code> directory.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Testing</h2>
+<h3><a class="anchor" id="autotoc_md6"></a>
+Linux / macOS</h3>
 <div class="fragment"><div class="line">git submodule update</div>
 <div class="line">cmake -S . -B build -DTEST=ON</div>
 <div class="line">cmake --build build</div>
 <div class="line">cd build</div>
 <div class="line">ctest --verbose</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
 Showcase</h2>
 <p><img src="https://github.com/bmoneill/largegifs/blob/main/raycast-demo.gif?raw=true" alt="Textured 3D View" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Documentation</h2>
 <p><a href="https://bmoneill.github.io/raycast/">Library documentation is available here</a>.</p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Further Reading</h2>
 <ul>
 <li><a href="https://lodev.org/cgtutor/raycasting.html">Lode's Computer Graphics Tutorial</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Bugs</h2>
 <p>If you find a bug, submit an issue, PR, or email me with a description and/or patch.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 License</h2>
 <p>Copyright (c) 2025-2026 Ben O'Neill <a href="#" onclick="location.href='mai'+'lto:'+'ben'+'@o'+'nei'+'ll'+'.sh'; return false;">ben@o<span class="obfuscator">.nosp@m.</span>neil<span class="obfuscator">.nosp@m.</span>l.sh</a>. This work is released under the terms of the MIT License. See [LICENSE](LICENSE) for the license terms. </p>
 </div></div><!-- PageDoc -->
