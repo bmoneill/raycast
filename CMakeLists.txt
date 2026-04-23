@@ -36,7 +36,7 @@ else()
 endif()
 
 # C standard
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_FILE_OFFSET_BITS=64")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pedantic -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_FILE_OFFSET_BITS=64")
 
 # Warnings
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic -Werror")
@@ -65,9 +65,7 @@ if(TEST)
     Enable_Tests()
     Build_Library()
     Build_Tests()
-else(TARGET_GROUP STREQUAL all)
-    Enable_Tests()
+else()
     Build_Library()
     Build_Demo()
-    Build_Tests()
 endif()
