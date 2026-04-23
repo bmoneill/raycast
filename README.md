@@ -10,6 +10,7 @@
 
 - [Overview](#overview)
 - [Building](#building)
+- [Requirements](#requirements)
 - [Testing](#testing)
 - [Showcase](#showcase)
 - [Library Documentation](#documentation)
@@ -24,7 +25,12 @@ rendering, as well as 2-D top-down "minimap" rendering.
 
 ## Building
 
-### Linux
+### Requirements
+
+- [CMake](https://cmake.org/) 3.31.6 or higher
+- A C99-compatible C compiler (e.g. GCC, Clang)
+
+### Linux / macOS
 
 ```shell
 # build library and demo
@@ -38,6 +44,8 @@ cmake --install build
 Demos will be located in the `build/demo` directory.
 
 ## Testing
+
+### Linux / macOS
 
 ```shell
 git submodule update
