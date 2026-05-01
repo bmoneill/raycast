@@ -29,6 +29,7 @@ rendering, as well as 2-D top-down "minimap" rendering.
 
 - [CMake](https://cmake.org/) 3.31.6 or higher
 - A C99-compatible C compiler (e.g. GCC, Clang)
+- [SDL3](https://wiki.libsdl.org/SDL3/FrontPage)
 
 ### Linux / macOS
 
